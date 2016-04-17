@@ -23,7 +23,9 @@ public class PlayerStats : MonoBehaviour {
     private Vector3 lastPosition;
     private float walkSpeed;
     private float runSpeed;
-    private float canRegenerate;
+
+    private float canRegenerate = 0.0f;
+    private float canHeal = 0.0f;
 
 
 
@@ -59,7 +61,7 @@ public class PlayerStats : MonoBehaviour {
     void FixedUpdate() {
         float speed = walkSpeed;
 
-        // Wytrzymalosc
+        // zuzycie staminy
         if (chCont.isGrounded && Input.GetKey(KeyCode.LeftShift) && lastPosition != transform.position && currentStamina > 0)
         {
             lastPosition = transform.position;
@@ -69,6 +71,7 @@ public class PlayerStats : MonoBehaviour {
             canRegenerate = 5.0f;
         }
 
+        // unimozliwienie biegania
         if (currentStamina > 0)
         {
             fpsC.CanRun = true;
@@ -84,11 +87,39 @@ public class PlayerStats : MonoBehaviour {
         {
             takeDamage(30);
         }
+
+        if (canHeal > 0.0f)
+        {
+            canHeal -= Time.deltaTime;
+        }
+        if (canRegenerate > 0.0f)
+        {
+            canRegenerate -= Time.deltaTime;
+        }
+
+        if (canHeal <= 0.0f && currentHealth < maxHealth)
+        {
+            regenerate(ref currentHealth, maxHealth);
+        }
+        if (canRegenerate <= 0.0f && currentStamina < maxStamina)
+        {
+            regenerate(ref currentStamina, maxStamina);
+        }
     }
 
     void takeDamage(float damage) {
-            currentHealth -= damage;
-            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        if (currentHealth < maxHealth)
+        { 
+            canHeal = 5.0f;
+        }
     }
 
+    void regenerate(ref float currentStat, float maxStat)
+    {
+        currentStat += maxStat * 0.0025f;
+        Mathf.Clamp(currentStat, 0, maxStat);
+    }
 }

@@ -44,11 +44,28 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         private bool m_CanRun = true;
-        private bool switchSwiming;
+        private bool inWater = false;
 
         public bool CanRun {
             get { return m_CanRun; }
             set { m_CanRun = value; }
+        }
+
+        public bool isSwim {
+            get { return inWater; }
+            set { inWater = value; }
+        }
+
+        public float setGravity
+        {
+            get { return m_GravityMultiplier; }
+            set { m_GravityMultiplier = value; }
+        }
+
+        public float setFall
+        {
+            get { return m_StickToGroundForce; }
+            set { m_StickToGroundForce = value; }
         }
 
         // Use this for initialization
@@ -84,11 +101,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
             }
-            if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
-            {
-                m_MoveDir.y = 0f;
-            }
-
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
 
@@ -99,40 +111,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle + .5f;
         }
 
-        void OnTriggerEnter(Collider col)
-        {
-            if (col.tag == "Ocean")
-            {
-                //firstPersonController = player.GetComponent<FirstPersonController>();
-                //player = col.gameObject;
-                switchSwiming = true;
-                //swim();
-            }
-        }
-
-        void OnTriggerExit(Collider col)
-        {
-            if (col.tag == "Ocean")
-            {
-                switchSwiming = false;
-                // walk();
-            }
-        }
-
-
         private void FixedUpdate()
         {
             float speed;
 
             GetInput(out speed);
-
-            float reSpeed = speed;
-
-            if(switchSwiming) {
-                speed = speed * (4/10);
-            } else {
-                speed = reSpeed;
-            }
 
             // always move along the camera forward as it is the direction that it being aimed at
             Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
@@ -292,6 +275,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
-        }
+        } 
     }
 }

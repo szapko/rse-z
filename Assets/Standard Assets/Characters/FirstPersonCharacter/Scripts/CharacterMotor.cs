@@ -37,11 +37,11 @@ public class CharacterMotor : MonoBehaviour
         public AnimationCurve slopeSpeedMultiplier = new AnimationCurve(new Keyframe(-90, 1), new Keyframe(0, 1), new Keyframe(90, 0));
 
         // How fast does the character change speeds?  Higher is faster.
-        public float maxGroundAcceleration = 30.0f;
-        public float maxAirAcceleration = 20.0f;
+        public float maxGroundAcceleration = 20.0f;
+        public float maxAirAcceleration = 15.0f;
 
         // The gravity for the character
-        public float gravity = 9.81f;
+        public float gravity = 20.0f;
         public float maxFallSpeed = 20.0f;
 
         // For the next variables, [System.NonSerialized] tells Unity to not serialize the variable or show it in the inspector view.

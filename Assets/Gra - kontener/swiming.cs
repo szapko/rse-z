@@ -1,64 +1,61 @@
 ﻿using UnityEngine;
 using System.Collections;
-//using UnityStandardAssets.Characters.FirstPerson;
+using UnityStandardAssets.Characters.FirstPerson;
 
-public class swiming : MonoBehaviour {
+[RequireComponent(typeof(CharacterController))]
 
-    public Color color;
-    bool switchSwiming = false;
+public class swiming : MonoBehaviour
+{
 
-    GameObject player;
+    private bool _isSwiming;
+    private CharacterController m_CharacterController;
 
-    //private FirstPersonController firstPersonController;
+    private FirstPersonController controller;
 
+    void Start()
+    {
+        _isSwiming = false;
+    }
 
-    void OnTriggerEnter(Collider col) {
-        if(col.tag == "Gracz") {
-            //firstPersonController = player.GetComponent<FirstPersonController>();
-            player = col.gameObject;
-            switchSwiming = true;
-            swim();
+    public void isSwiming(bool swim)
+    {
+        _isSwiming = swim;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Gracz")
+        {
+            controller = other.GetComponent<FirstPersonController>();
+            Debug.Log("enter");
+
+            controller.GetComponent<FirstPersonController>().isSwim = true;
+
+            if (controller.isSwim)
+            {
+                // mechanizm plywania
+                controller.GetComponent<FirstPersonController>().setGravity = 0;
+                controller.GetComponent<FirstPersonController>().setFall = 0;
+            }
         }
     }
 
-    void OnTriggerExit(Collider col) {
-        if (col.tag == "Gracz") {
-            switchSwiming = false;
-            walk();
+    void OnTriggerExit(Collider other)
+    {
+        if (other.transform.tag == "Gracz")
+        {
+            controller = other.GetComponent<FirstPersonController>();
+
+            m_CharacterController = GetComponent<CharacterController>();
+
+            controller.GetComponent<FirstPersonController>().isSwim = false;
+
+            if (m_CharacterController.isGrounded != null)
+            {
+                controller.GetComponent<FirstPersonController>().setGravity = 2;
+                controller.GetComponent<FirstPersonController>().setFall = 10;
+                Debug.Log("left the water");
+            }
         }
-    }
-
-    void Update() {
-        if(Input.GetKey(KeyCode.Z) && switchSwiming) {
-
-        } else if(!Input.GetKey(KeyCode.Z) && switchSwiming) {
-
-        } else if(Input.GetKey(KeyCode.Q) && switchSwiming) {
-
-        } else if (!Input.GetKey(KeyCode.Q) && switchSwiming) {
-
-        } else {
-
-        }
-    } 
-
-    void swim() {
-       // player.GetComponent<FirstPersonController>().m_WalkSpeed = 2;
-       // player.GetComponent<CharacterMotor>().maxSidewaysSpeed = 2;
-       // player.GetComponent<CharacterMotor>().maxBackwardsSpeed = 2;
-       // player.GetComponent<CharacterMotor>().maxGroundAcceleration = 2;
-       // player.GetComponent<CharacterMotor>().maxAirAcceleration = 2;
-        //player.GetComponent<CharacterMotor>().movement.gravity = 1;
-        //player.GetComponent<CharacterMotor>().movement.maxFallSpeed = 2;
-    }
-
-    void walk() {
-       // player.GetComponent<CharacterMotor>().movement.maxForwardSpeed = 6;
-       // player.GetComponent<CharacterMotor>().movement.maxSidewaysSpeed = 6;
-       // player.GetComponent<CharacterMotor>().movement.maxBackwardsSpeed = 6;
-       // player.GetComponent<CharacterMotor>().movement.maxGroundAcceleration = 20;
-       // player.GetComponent<CharacterMotor>().movement.maxAirAcceleration = 15;
-       // player.GetComponent<CharacterMotor>().movement.gravity = 20;
-        ///player.GetComponent<CharacterMotor>().movement.maxFallSpeed = 20;
     }
 }
