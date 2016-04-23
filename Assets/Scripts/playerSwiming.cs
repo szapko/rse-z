@@ -4,13 +4,13 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 [RequireComponent(typeof(CharacterController))]
 
-public class swiming : MonoBehaviour
+public class playerSwiming : MonoBehaviour
 {
 
     private bool _isSwiming;
     private CharacterController m_CharacterController;
 
-    private FirstPersonController controller;
+    private playerFirstPersonController controller;
 
     void Start()
     {
@@ -26,16 +26,16 @@ public class swiming : MonoBehaviour
     {
         if (other.transform.tag == "Gracz")
         {
-            controller = other.GetComponent<FirstPersonController>();
+            controller = other.GetComponent<playerFirstPersonController>();
             Debug.Log("enter");
 
-            controller.GetComponent<FirstPersonController>().isSwim = true;
+            controller.GetComponent<playerFirstPersonController>().isSwim = true;
 
             if (controller.isSwim)
             {
                 // mechanizm plywania
-                controller.GetComponent<FirstPersonController>().setGravity = 0;
-                controller.GetComponent<FirstPersonController>().setFall = 0;
+                controller.GetComponent<playerFirstPersonController>().setGravity = 0;
+                controller.GetComponent<playerFirstPersonController>().setFall = 0;
             }
         }
     }
@@ -44,16 +44,16 @@ public class swiming : MonoBehaviour
     {
         if (other.transform.tag == "Gracz")
         {
-            controller = other.GetComponent<FirstPersonController>();
+            controller = other.GetComponent<playerFirstPersonController>();
 
             m_CharacterController = GetComponent<CharacterController>();
 
-            controller.GetComponent<FirstPersonController>().isSwim = false;
+            controller.GetComponent<playerFirstPersonController>().isSwim = false;
 
             if (m_CharacterController.isGrounded != null)
             {
-                controller.GetComponent<FirstPersonController>().setGravity = 2;
-                controller.GetComponent<FirstPersonController>().setFall = 10;
+                controller.GetComponent<playerFirstPersonController>().setGravity = 2;
+                controller.GetComponent<playerFirstPersonController>().setFall = 10;
                 Debug.Log("left the water");
             }
         }

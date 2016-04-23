@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class menu : MonoBehaviour {
+public class mainMenu : MonoBehaviour {
     // Przypisujemy skin
     public GUISkin skin;
     public GUIStyle skinText;

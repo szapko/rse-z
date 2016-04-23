@@ -4,12 +4,12 @@ using UnityStandardAssets.Utility;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
-    public class HeadBob : MonoBehaviour
+    public class playerHeadBob : MonoBehaviour
     {
         public Camera Camera;
         public CurveControlledBob motionBob = new CurveControlledBob();
         public LerpControlledBob jumpAndLandingBob = new LerpControlledBob();
-        public RigidbodyFirstPersonController rigidbodyFirstPersonController;
+        public playerRigidbodyFirstPersonController rigidbodyFirstPersonController;
         public float StrideInterval;
         [Range(0f, 1f)] public float RunningStrideLengthen;
 

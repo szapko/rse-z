@@ -6,7 +6,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (Rigidbody))]
     [RequireComponent(typeof (CapsuleCollider))]
-    public class RigidbodyFirstPersonController : MonoBehaviour
+    public class playerRigidbodyFirstPersonController : MonoBehaviour
     {
         [Serializable]
         public class MovementSettings
@@ -79,7 +79,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public Camera cam;
         public MovementSettings movementSettings = new MovementSettings();
-        public MouseLook mouseLook = new MouseLook();
+        public playerMouseLook mouseLook = new playerMouseLook();
         public AdvancedSettings advancedSettings = new AdvancedSettings();
 
 

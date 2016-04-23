@@ -69,13 +69,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\menu.cs" />
-    <Compile Include="Assets\Scripts\menuKey.cs" />
-    <Compile Include="Assets\Scripts\swiming.cs" />
+    <Compile Include="Assets\Scripts\mainMenu.cs" />
+    <Compile Include="Assets\Scripts\pauseMenu.cs" />
+    <Compile Include="Assets\Scripts\playerFirstPersonController.cs" />
+    <Compile Include="Assets\Scripts\playerHeadBob.cs" />
+    <Compile Include="Assets\Scripts\playerMouseLook.cs" />
+    <Compile Include="Assets\Scripts\playerRigidbodyFirstPersonController.cs" />
+    <Compile Include="Assets\Scripts\playerStatistics.cs" />
+    <Compile Include="Assets\Scripts\playerSwiming.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
-    <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

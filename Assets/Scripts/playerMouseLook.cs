@@ -5,7 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [Serializable]
-    public class MouseLook
+    public class playerMouseLook
     {
         public float XSensitivity = 2f;
         public float YSensitivity = 2f;

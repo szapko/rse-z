@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class menuKey : MonoBehaviour {
+public class pauseMenu : MonoBehaviour {
 
     private int buttonWidth = 200;
     private int buttonHeight = 50;
