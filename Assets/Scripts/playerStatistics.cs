@@ -35,6 +35,10 @@ public class playerStatistics : MonoBehaviour {
     private float aplha = 0.0f;
     // efekt obrazen
 
+    // Komunikaty
+    public GUIStyle skinTextCom;
+    // komunikaty
+
     void Awake() {
         barHeight = Screen.height * 0.02f;
         barWidth = barHeight * 10.0f;
@@ -61,6 +65,7 @@ public class playerStatistics : MonoBehaviour {
                                  currentStamina * barWidth / maxStamina,
                                  barHeight),
                         staminaTexture);
+
         // Efekt obrazen
         if (hit)
         {
@@ -77,6 +82,18 @@ public class playerStatistics : MonoBehaviour {
             hit = false;
         }
         // efekt obrazen
+
+        // Komunikaty
+        skinTextCom.richText = true;
+        if (currentHealth <= 0.0f) {
+            if (currentHunger <= 0.0f) {
+                GUI.Label(new Rect(0, 0, Screen.width, Screen.height), "UMARLES \nZ \nGLODU", skinTextCom);
+            } else
+            {
+                GUI.Label(new Rect(0, 0, Screen.width, Screen.height), "ZGINALES!", skinTextCom);
+            }
+        } 
+        // komunikaty
     }
 
     void FixedUpdate() {
