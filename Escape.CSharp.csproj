@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\playerRigidbodyFirstPersonController.cs" />
     <Compile Include="Assets\Scripts\playerStatistics.cs" />
     <Compile Include="Assets\Scripts\playerSwiming.cs" />
+    <Compile Include="Assets\Scripts\soundSwimming.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />

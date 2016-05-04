@@ -36,6 +36,7 @@ public class playerSwiming : MonoBehaviour
                 // mechanizm plywania
                 controller.GetComponent<playerFirstPersonController>().setGravity = 0;
                 controller.GetComponent<playerFirstPersonController>().setFall = 0;
+
             }
         }
     }
