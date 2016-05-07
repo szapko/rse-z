@@ -51,6 +51,9 @@ public class mainMenu : MonoBehaviour
     private bool soundOn = true;
     private string soundText;
 
+    // Źródło dźwięku
+    AudioSource audioBg;
+
     void Start()
     {
         // responsywnosc
@@ -79,6 +82,11 @@ public class mainMenu : MonoBehaviour
         marginLeftLabel = (marginLeftLabel * Screen.width) / 1920;
         marginTopLabel = (marginTopLabel * Screen.height) / 1080;
         marginTopLabel2 = (marginTopLabel2 * Screen.height) / 1080;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        audioBg = GetComponent<AudioSource>();
     }
 
     void OnGUI()
@@ -132,6 +140,7 @@ public class mainMenu : MonoBehaviour
                 if (GUI.Button(new Rect(0, (marginTopLabel + buttonHeightLabel) * 2, buttonWidthLabel, buttonHeightLabel), soundOn ? "<size=35>Dzwieki wlaczone</size>" : "<size=35>Dzwieki wylaczone</size>"))
                 {
                     soundOn = !soundOn;
+                    audioBg.mute = !audioBg.mute;
                 }
                 if (GUI.Button(new Rect(0, (marginTopLabel + buttonHeightLabel) * 10, buttonWidthLabel, buttonHeightLabel), "<size=35>Cofnij</size>"))
                 {

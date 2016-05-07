@@ -92,6 +92,9 @@ public class playerStatistics : MonoBehaviour {
             {
                 GUI.Label(new Rect(0, 0, Screen.width, Screen.height), "ZGINALES!", skinTextCom);
             }
+            
+            Destroy(fpsC, 0.1F); // niszczymy gracza
+            fpsC.setAlive = false;
         } 
         // komunikaty
     }
@@ -172,11 +175,6 @@ public class playerStatistics : MonoBehaviour {
         { 
             canHeal = 5.0f;
         }
-    }
-
-    void isDead()
-    {
-
     }
 
     void regenerate(ref float currentStat, float maxStat)

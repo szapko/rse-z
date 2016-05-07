@@ -43,8 +43,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
 
 
+        // czy moze biec
         private bool m_CanRun = true;
+
+        // czy jest w wodzie
         private bool inWater = false;
+
+        // czy zyje
+        private bool inAlive = true;
+
 
         public bool CanRun {
             get { return m_CanRun; }
@@ -66,6 +73,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             get { return m_StickToGroundForce; }
             set { m_StickToGroundForce = value; }
+        }
+
+        public bool setAlive
+        {
+            get { return inAlive; }
+            set { inAlive = value; }
         }
 
         // Use this for initialization
