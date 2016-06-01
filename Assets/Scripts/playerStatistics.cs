@@ -154,15 +154,15 @@ public class playerStatistics : MonoBehaviour {
         }
 
         // Efekt głodu
-        //currentHunger -= Time.deltaTime*0.01f; // wartosc domyslna
-        currentHunger -= Time.deltaTime * 10.0f;
+        currentHunger -= Time.deltaTime*0.01f; // wartosc domyslna
+        //currentHunger -= Time.deltaTime * 10.0f; // dod testow
         currentHunger = Mathf.Clamp(currentHunger, 0, maxHunger);
 
         // zabiera zycie gdy jestes glodny
         if (currentHunger == 0.0f && currentHealth >= 0.0f)
         {
-            //currentHealth -= Time.deltaTime * 0.3f; // wartosc domyslna
-            currentHealth -= Time.deltaTime * 10.0f;
+            currentHealth -= Time.deltaTime * 0.3f; // wartosc domyslna
+            //currentHealth -= Time.deltaTime * 10.0f; // do testow
         }
 
     }
