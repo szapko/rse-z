@@ -12,15 +12,12 @@ public class console : MonoBehaviour {
 
     // zmienna na linie komend
     string consoleLineCom = "";
-    
-    // CONSOLA ON/OFF
-    private bool consoleSwitch = false;
 
     // Kontrolka do kodu wykonanego
     private int descConsole = 0;
     
     // Pauza //
-    bool paused = false;
+    bool paused;
 
     // dołączamy kontroler rozgladania się myszka
     private UnityStandardAssets.Characters.FirstPerson.playerFirstPersonController pML;
@@ -29,41 +26,40 @@ public class console : MonoBehaviour {
     {
         pML = gameObject.GetComponent<UnityStandardAssets.Characters.FirstPerson.playerFirstPersonController>();
 
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 1;
+        paused = false;
     }
 
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.BackQuote))
         {
-            descConsole = 0;
             consoleLineCom = "";
-            consoleSwitch = !(consoleSwitch);
-            //  LockMouseLook();
-            //  paused = togglePause();
+            paused = togglePause();
+            LockMouseLook();
+            descConsole = 0;
+           // Cursor.visible = true;
         }
 
         if (Input.GetKeyUp(KeyCode.Return))
         {
             if (consoleLineCom != "") {
+                paused = togglePause();
+               LockMouseLook();
                 descConsole = 1;
             }
+
         }
     }
 
     void OnGUI()
     {
-       // if (paused)
-        //{
-            if (consoleSwitch)
-            {
-            Time.timeScale = 0;
-            //Cursor.visible = true;
-            //Cursor.lockState = CursorLockMode.None;
-
+       if (paused)
+         {  
             GUI.TextField(new Rect(0, 0, width, height), "Run! Survive! Escape! Zombie copyright by Daniel \"SzAPKO\" Dudzikowski.", consoleSkin);
-
-                int a = 1;
+            
+            int a = 1;
                 if (descConsole == 1)
                 {
                     switch (consoleLineCom)
@@ -80,16 +76,13 @@ public class console : MonoBehaviour {
                 }
                     a = 2;
                 }
-
+                GUI.SetNextControlName("FocusInput");
                 consoleLineCom = GUI.TextField(new Rect(0, height * a, width, height), consoleLineCom, 100, consoleSkinWritable);
-            } else
-            {
-                Time.timeScale = 1;
-            }
-       // }
+                GUI.FocusControl("FocusInput");
+        } 
     }
 
-    /*
+   
     bool togglePause()
     {
         if (Time.timeScale == 0)
@@ -116,6 +109,5 @@ public class console : MonoBehaviour {
             pML.m_MouseLook.YSensitivity = 2F;
         }
     }
-    */
 }
  

@@ -9,9 +9,23 @@ public class pauseMenu : MonoBehaviour {
     private int groupWidth = 200;
     private int groupHeight = 400;
 
+    // Wymiary consoli
+    public int width = Screen.width;
+    public int height = 30;
+
     public Texture2D darkBackground;
 
-    bool paused = false;
+    bool paused;
+
+    // Pokaz/ukryj konsole
+    bool consoleShow;
+    // zmienna na linie komend
+    string consoleLineCom = "";
+    // Kontrolka do kodu wykonanego
+    private int descConsole = 0;
+
+    // Styl konsoli
+    public GUIStyle consoleSkin, consoleSkinWritable;
 
     // dołączamy kontroler rozgladania się myszka
     private UnityStandardAssets.Characters.FirstPerson.playerFirstPersonController pML;
@@ -20,14 +34,48 @@ public class pauseMenu : MonoBehaviour {
         pML = gameObject.GetComponent<UnityStandardAssets.Characters.FirstPerson.playerFirstPersonController>();
 
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.visible = true;
         Time.timeScale = 1;
+        paused = false;
+        consoleShow = false;
     }
 
     void OnGUI() {
         if(paused) {
 
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), darkBackground);
+
+            if(consoleShow)
+            {
+                GUI.TextField(new Rect(0, 0, width, height), "Run! Survive! Escape! Zombie copyright by Daniel \"SzAPKO\" Dudzikowski.", consoleSkin);
+
+                if (descConsole == 0)
+                {
+                    //   GUI.SetNextControlName("FocusInput");
+                    consoleLineCom = GUI.TextField(new Rect(0, height, width - 50, height), consoleLineCom, 100, consoleSkinWritable);
+                    //   GUI.FocusControl("FocusInput");
+
+                    if (GUI.Button(new Rect(width - 50, height, 50, height), "<size=11>Wyslij</size>", consoleSkin))
+                    {
+                        descConsole = 1;
+                    }
+                }
+                else if(descConsole == 1)
+                {
+                    switch (consoleLineCom)
+                    {
+                        case "my_position":
+                            GUI.TextField(new Rect(0, height, width, height), "X: " + pML.transform.position.x + " | Y:" + pML.transform.position.y + " | Z:" + pML.transform.position.z, consoleSkin);
+                            break;
+                        case "help":
+                            GUI.TextField(new Rect(0, height, width, height), "Dostepne komendy: my_position", consoleSkin);
+                            break;
+                        default:
+                            GUI.TextField(new Rect(0, height, width, height), "Niepoprawna komenda!", consoleSkin);
+                            break;
+                    }
+                }
+            }
 
             GUI.BeginGroup(new Rect(((Screen.width / 2) - (groupWidth / 2)), ((Screen.height / 2) - (groupHeight / 2)), groupWidth, groupHeight));
 
@@ -63,6 +111,14 @@ public class pauseMenu : MonoBehaviour {
             if(Input.GetKeyUp(KeyCode.Escape)) {
                 paused = togglePause();
                 LockMouseLook();
+            }
+        }
+        if(paused == true)
+        {
+            if (Input.GetKeyUp(KeyCode.BackQuote))
+            {
+                consoleShow = !consoleShow;
+                descConsole = 0;
             }
         }
     }
