@@ -21,8 +21,8 @@ public class playerStatistics : MonoBehaviour {
     private UnityStandardAssets.Characters.FirstPerson.playerFirstPersonController fpsC;
 
     private Vector3 lastPosition;
-    private float walkSpeed;
-    private float runSpeed;
+    private float walkSpeed = 5.0f;
+    private float runSpeed = 10.0f;
 
     private float canRegenerate = 0.0f;
     private float canHeal = 0.0f;

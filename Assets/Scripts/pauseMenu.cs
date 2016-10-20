@@ -67,8 +67,14 @@ public class pauseMenu : MonoBehaviour {
                         case "my_position":
                             GUI.TextField(new Rect(0, height, width, height), "X: " + pML.transform.position.x + " | Y:" + pML.transform.position.y + " | Z:" + pML.transform.position.z, consoleSkin);
                             break;
+                        case "time":
+                            GUI.TextField(new Rect(0, height, width, height), "Akualna godzina: ", consoleSkin);
+                            break;
+                        case "show_day":
+                            GUI.TextField(new Rect(0, height, width, height), "Dzień: ", consoleSkin);
+                            break;
                         case "help":
-                            GUI.TextField(new Rect(0, height, width, height), "Dostepne komendy: my_position", consoleSkin);
+                            GUI.TextField(new Rect(0, height, width, height), "Dostepne komendy: my_position, time, show_day", consoleSkin);
                             break;
                         default:
                             GUI.TextField(new Rect(0, height, width, height), "Niepoprawna komenda!", consoleSkin);

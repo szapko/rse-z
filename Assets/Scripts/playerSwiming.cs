@@ -27,7 +27,7 @@ public class playerSwiming : MonoBehaviour
         if (other.transform.tag == "Gracz")
         {
             controller = other.GetComponent<playerFirstPersonController>();
-            Debug.Log("enter");
+            //Debug.Log("enter");
 
             controller.GetComponent<playerFirstPersonController>().isSwim = true;
 
@@ -55,7 +55,7 @@ public class playerSwiming : MonoBehaviour
             {
                 controller.GetComponent<playerFirstPersonController>().setGravity = 2;
                 controller.GetComponent<playerFirstPersonController>().setFall = 10;
-                Debug.Log("left the water");
+                //Debug.Log("left the water");
             }
         }
     }
