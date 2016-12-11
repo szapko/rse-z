@@ -4,11 +4,11 @@ using System.Collections;
 public class playerStatistics : MonoBehaviour {
 
     private float maxHealth = 100;
-    private float currentHealth = 100;
+    public float currentHealth = 100;
     private float maxHunger = 100;
-    private float currentHunger = 100;
+    public float currentHunger = 100;
     private float maxStamina = 100;
-    private float currentStamina = 100;
+    public float currentStamina = 100;
 
     private float barWidth;
     private float barHeight;
@@ -19,6 +19,7 @@ public class playerStatistics : MonoBehaviour {
 
     private CharacterController chCont;
     private UnityStandardAssets.Characters.FirstPerson.playerFirstPersonController fpsC;
+    
 
     private Vector3 lastPosition;
     private float walkSpeed = 5.0f;
@@ -154,8 +155,8 @@ public class playerStatistics : MonoBehaviour {
         }
 
         // Efekt głodu
-        currentHunger -= Time.deltaTime*0.01f; // wartosc domyslna
-        //currentHunger -= Time.deltaTime * 10.0f; // dod testow
+       // currentHunger -= Time.deltaTime*0.01f; // wartosc domyslna
+        currentHunger -= Time.deltaTime * 5.0f; // dod testow
         currentHunger = Mathf.Clamp(currentHunger, 0, maxHunger);
 
         // zabiera zycie gdy jestes glodny

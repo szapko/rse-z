@@ -1,0 +1,12 @@
+﻿<Properties StartupItem="rse-z.Plugins.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\environmentDayNight.cs">
+    <Files>
+      <File FileName="Assets\Scripts\environmentDayNight.cs" Line="9" Column="32" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

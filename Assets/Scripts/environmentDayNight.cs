@@ -6,7 +6,7 @@ public class environmentDayNight : MonoBehaviour {
     private float m; // pudełko pomocnicze
    // private float TimeInDays; // który dzień z kolei gry
 
-    public float s = 1; // prędkość
+    public float s = 1.0f; // prędkość
 
    // public float DayTimeLimit = 10000.0f; // ile trwa jedna doba // jednostka: 
 

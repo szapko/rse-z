@@ -142,6 +142,11 @@ public class pauseMenu : MonoBehaviour {
         }
     }
 
+    public bool pausedInfo()
+    {
+        return paused;
+    }
+
     void LockMouseLook()
     {
         if(pML.m_MouseLook.XSensitivity == 2F)

@@ -75,12 +75,15 @@
     <Compile Include="Assets\0000 ats V2 package\atsV2 UnityTerrainBump Package\CustomTerrainScriptAtsV2.cs" />
     <Compile Include="Assets\Scripts\console.cs" />
     <Compile Include="Assets\Scripts\environmentDayNight.cs" />
+    <Compile Include="Assets\Scripts\itemAbstract.cs" />
+    <Compile Include="Assets\Scripts\itemFood.cs" />
     <Compile Include="Assets\Scripts\mainMenu.cs" />
     <Compile Include="Assets\Scripts\pauseMenu.cs" />
     <Compile Include="Assets\Scripts\playerEquipment.cs" />
     <Compile Include="Assets\Scripts\playerFirstPersonController.cs" />
     <Compile Include="Assets\Scripts\playerHeadBob.cs" />
     <Compile Include="Assets\Scripts\playerMouseLook.cs" />
+    <Compile Include="Assets\Scripts\playerRaycast.cs" />
     <Compile Include="Assets\Scripts\playerRigidbodyFirstPersonController.cs" />
     <Compile Include="Assets\Scripts\playerStatistics.cs" />
     <Compile Include="Assets\Scripts\playerSwiming.cs" />
